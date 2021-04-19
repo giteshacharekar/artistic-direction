@@ -12,6 +12,9 @@ def blogHome(request):
 
 def blogPost(request, slug): 
     post=Post.objects.filter(slug=slug).first()
+    post.views= post.views +1
+    post.save()
+    
     comments= ArtComment.objects.filter(post=post, parent=None)
     replies= ArtComment.objects.filter(post=post).exclude(parent=None)
     replyDict={}
@@ -48,6 +51,7 @@ def CreateNewPost(request):
     if request.method == "POST":
         image=request.POST.file('image')
         title=request.POST.get('title')
+        tools=request.POST.get('tools')
         content=request.POST.get('content')
         user=request.user
         print(title)

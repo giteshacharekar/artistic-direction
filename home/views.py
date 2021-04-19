@@ -105,13 +105,14 @@ def CreateNewPost(request):
         image =request.FILES['imagefile']
         convertedimage = base64.b64encode(image.read())
         title=request.POST.get('title')
+        tools=request.POST.get('tools')
         content=request.POST.get('content')
         user=request.user
-        print(title)
-        print(content)
+        #print(title)
+        #print(content)
         convertedimage="data:image/jpeg;base64,"+ str(convertedimage.decode("utf-8"))
 
-        entry = Post(title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
+        entry = Post(tools=tools,title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
         entry.save()
         messages.success(request, "Your comment has been posted successfully")
         return redirect('/')

@@ -7,13 +7,17 @@
 {% load extras %}
 <div class="container my-3">
   <h2 class="blog-post-title">{{post.title}}</h2>
-  <p class="blog-post-meta">{{post.timeStamp}} by <a href="/about">{{post.author}}</a></p>
+  <p class="blog-post-meta">{{post.timeStamp}} by <a href="/about">{{post.author}}</a>(<span > {{post.views}} views</span>)</p>
   <div class="col s6">
   <center>
   <img src='{{ post.artimage }}' style='width:50%;height:100%'></div>
   </center>
+  <h4>Discription:</h4>
   <p>{{post.content}}</p>
   <hr>
+  <h4>Tools:</h4>
+  <p>{{post.tools}}</p>
+  <hr style="height:3px;border-width:0;color:gray;background-color:gray">
 </div>
 <div class="container">
   <h2> Comments ({{comments.count}}) </h2>
