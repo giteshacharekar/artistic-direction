@@ -16,5 +16,7 @@ urlpatterns = [
    path('login', views.handleLogin, name='handleLogin'),
    path('logout', views.handleLogout, name='handleLogout'),
    path('CreateNewPost', views.CreateNewPost, name='createpost'),
+   path('myprofile', views.MyProfile, name='MyProfile'),
+   path('likepost', views.LikePost, name='likepost'),
    
 ]

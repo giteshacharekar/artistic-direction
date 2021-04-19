@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} My Profile {% endblock title %}
+
+{% block profileactive %} active {% endblock profileactive %}
+
+{% block body %} 
+{% for post in allPosts %}
+    
+    
+    <div class="shadow p-3 mb-5 bg-white rounded row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0 d-inline-block mb-3 ">Artwork by "{{post.author}}" </h3>
+            <div class="row">
+ 
+                <div class="col s6"><img src='{{ post.artimage }}' style='width:100%;height:100%'></div>
+                <div class="col s6">
+                     <h1 class="mb-0">{{post.title}}</h1>
+                    <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+                     <h5>Discription:</h5>
+                    <p class="card-text mb-auto">{{post.content| truncatechars:500 }}</p>
+                     <h5>Tools:</h5>
+                    <p class="card-text mb-auto">{{post.tools| truncatechars:500 }}</p>
+                    <div class="my-2">
+                    <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary ">view post</a>
+                    <img src="https://img.icons8.com/fluent/48/000000/facebook-like.png"/>
+                    
+                    </div>
+                   <h4> {{post.views}} views<h4>
+                </div>
+            </div>
+            
+           
+        </div>
+        <div class="col-auto d-none d-lg-block">
+
+        </div>
+    </div> 
+
+
+    {% endfor %}
+{% endblock body %}

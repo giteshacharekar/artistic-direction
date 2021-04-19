@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -40,10 +40,15 @@
       
       <div class="ml-auto form-inline">
       <form method="get" action="/search" class=" my-2 my-lg-0 mx-3">
+      
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query"
+          id="query" required>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
        {% if is_home_page and user.is_authenticated %}
-        <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#create">
+        <a type="button" class="btn btn-success m-2 my-sm-0 " style="color:white" data-toggle="modal" data-target="#create">
         Create Post
-      </button>
+      </a>
           
 
   <!-- Login Modal -->
@@ -80,10 +85,6 @@
 
 
        {% endif %}
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query"
-          id="query">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
       <a href="/admin" role="button" target="_blank" class="btn btn-success m-2 my-sm-0">Admin Panel</a> 
 
       {% if user.is_authenticated %}
@@ -93,6 +94,7 @@
           Welcome {{request.user}} {{ request.test }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/myprofile">My Profile</a> 
           <a class="dropdown-item" href="/logout">Logout</a> 
         </div>
       </li>

@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from blog.models import Post
 from datetime import datetime
+from django.http import JsonResponse
+import json
+
 
 import base64
 
@@ -123,3 +126,20 @@ def handleLogout(request):
     logout(request)
     messages.success(request, "Successfully Logged Out")
     return redirect('home') 
+
+def MyProfile(request): 
+    user=request.user
+    print(user)
+    allPosts = Post.objects.filter(author=request.user).all()
+    #allPosts= Post.objects.all()
+    #is_home_page=True
+    context={'allPosts': allPosts }
+    return render(request, 'home/myprofile.html', context) 
+
+def LikePost(request): 
+    received_json_data=json.loads(request.body)
+    print(received_json_data["srno"],request.user)
+    return JsonResponse({'foo':'bar'})    
+
+    
+
