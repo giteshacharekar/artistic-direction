@@ -5,9 +5,13 @@
 {% block profileactive %} active {% endblock profileactive %}
 
 {% block body %} 
+<div class="container my-3">
+    <h2>My Artworks:</h2>
+</div>    
 {% for post in allPosts %}
     
-    
+<div class="container my-3">  
+ 
     <div class="shadow p-3 mb-5 bg-white rounded row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0 d-inline-block mb-3 ">Artwork by "{{post.author}}" </h3>
@@ -36,7 +40,7 @@
 
         </div>
     </div> 
-
+</div>
 
     {% endfor %}
 {% endblock body %}
