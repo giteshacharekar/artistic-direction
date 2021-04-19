@@ -15,17 +15,14 @@
         <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-primary">Artwork by {{post.author}}</strong>
             <div class="row">
-                    {% comment %} {% with imagepost = post.artimage.decode('utf-8') %}
-                      {% endwith %}
-                    {% with image = "data:image/jpeg;base64,"+imagepost %}
-                      {% endwith %} {% endcomment %}
+ 
                 <div class="col s6"><img src='{{ post.artimage }}' style='width:500px;height:100%'></div>
                 <div class="col s6">
                      <h3 class="mb-0">{{post.title}}</h3>
                     <div class="mb-1 text-muted">{{post.timeStamp}}</div>
                     <p class="card-text mb-auto">{{post.content| truncatechars:500 }}</p>
                     <div class="my-2">
-                    <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary ">Continue reading</a>
+                    <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary ">view post</a>
                     <img src="https://img.icons8.com/fluent/48/000000/facebook-like.png"/>
                     </div>
                 </div>
