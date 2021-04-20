@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from home.models import Contact
+from home.models import artlike
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -118,7 +119,7 @@ def CreateNewPost(request):
         entry = Post(tools=tools,title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
         entry.save()
         messages.success(request, "Your comment has been posted successfully")
-        return redirect('/')
+        return redirect('/blog')
         
 
 
@@ -138,6 +139,8 @@ def MyProfile(request):
 
 def LikePost(request): 
     received_json_data=json.loads(request.body)
+    artlike.likes= artlike.likes +1
+    artlike.save()
     print(received_json_data["srno"],request.user)
     return JsonResponse({'foo':'bar'})    
 

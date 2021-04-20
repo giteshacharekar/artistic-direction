@@ -74,7 +74,7 @@ alert(srno)
  
                 <div class="col s6"><img src='{{ post.artimage }}' style='width:100%;height:100%'></div>
                 <div class="col s6">
-                     <h1 class="mb-0">{{post.title}}</h1>
+                     <h1 class="mb-0">"{{post.title}}"</h1>
                     <div class="mb-1 text-muted">{{post.timeStamp}}</div>
                      <h5>Discription:</h5>
                     <p class="card-text mb-auto">{{post.content| truncatechars:500 }}</p>

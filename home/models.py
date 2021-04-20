@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.utils.timezone import now
 # Create your models here.
 # Database ----> Excel workbook
 # Models In Django ----> Table  --------> Sheet
@@ -14,4 +15,8 @@ class Contact(models.Model):
 
     def __str__(self):
         return 'Message from ' + self.name + ' - ' + self.email
-    
+
+class artlike(models.Model):
+    likes = models.IntegerField(default=0)
+    srno= models.IntegerField(default=0)
+    user = models.CharField(max_length=50)
