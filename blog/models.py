@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     views= models.IntegerField(default=0)
-    
+    totallikes=models.IntegerField(default=0)
     tools = models.TextField()
     artimage = models.TextField(default='')
     author = models.CharField(max_length=50) 

@@ -139,10 +139,34 @@ def MyProfile(request):
 
 def LikePost(request): 
     received_json_data=json.loads(request.body)
-    artlike.likes= artlike.likes +1
-    artlike.save()
-    print(received_json_data["srno"],request.user)
-    return JsonResponse({'foo':'bar'})    
+    
+    validate=artlike.objects.filter(srno=received_json_data["srno"],user=request.user).count()
+    print("total count is ",validate)
+    
+    if validate==0:
+        #allow to like
+        post=Post.objects.filter(sno=received_json_data["srno"]).first()
+        post.totallikes= post.totallikes +1
+        post.save()
+        add=artlike(srno=received_json_data["srno"],user=request.user)
+        add.save()
+        print(received_json_data["srno"],request.user)
+        return JsonResponse({'totallikes':post.totallikes})    
+    else :
+        #deacrease the like and remove user from artlike table
+        post=Post.objects.filter(sno=received_json_data["srno"]).first()
+        post.totallikes= post.totallikes -1
+        post.save()
+        add=artlike.objects.filter(srno=received_json_data["srno"],user=request.user).delete()
+       
+        return JsonResponse({'totallikes':post.totallikes})    
+   
+
+def deletepost(request): 
+    received_json_data=json.loads(request.body)  
+    delete=Post.objects.filter(sno=received_json_data["srno"], author=request.user).delete()
+    print("deleting post " , received_json_data["srno"])
+    return JsonResponse({'msg':"deleted "})    
 
     
 

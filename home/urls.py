@@ -18,5 +18,6 @@ urlpatterns = [
    path('CreateNewPost', views.CreateNewPost, name='createpost'),
    path('myprofile', views.MyProfile, name='MyProfile'),
    path('likepost', views.LikePost, name='likepost'),
+   path('deletepost', views.deletepost, name='deletepost'),
    
 ]
