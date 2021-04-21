@@ -18,8 +18,7 @@ class Post(models.Model):
     def __str__(self):
         return  self.title + ' by ' + self.author
 
-from django.contrib.auth.models import User
-from django.utils.timezone import now
+
 
 class ArtComment(models.Model):
     sno= models.AutoField(primary_key=True)
