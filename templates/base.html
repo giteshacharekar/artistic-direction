@@ -35,6 +35,10 @@
          <li class="nav-item {% block aboutactive %} {% endblock aboutactive %}">
           <a class="nav-link" href="/about">About</a>
         </li>
+         </li>
+         <li class="nav-item {% block profileactive %} {% endblock profileactive %}">
+          <a class="nav-link" href="/myprofile">My Profile</a>
+        </li>
 
       </ul>
       
@@ -115,6 +119,8 @@
       </div>
     </div>
   </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   </nav>
   {% for message in messages %}
   <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
     <strong>Message: </strong> {{ message }}
