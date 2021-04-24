@@ -5,6 +5,13 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def blogHome(request): 
+    filter=request.GET.get('filter')
+    if filter:
+        allPosts= Post.objects.filter(arttype=filter).all()
+        is_home_page=True
+        context={'allPosts': allPosts ,"is_home_page":is_home_page}
+        return render(request, "blog/blogHome.html", context)
+        
     allPosts= Post.objects.all()
     is_home_page=True
     context={'allPosts': allPosts ,"is_home_page":is_home_page}
@@ -53,6 +60,7 @@ def CreateNewPost(request):
         title=request.POST.get('title')
         tools=request.POST.get('tools')
         content=request.POST.get('content')
+        arttype=request.POST.get('arttype')
         user=request.user
         print(title)
         print(content)

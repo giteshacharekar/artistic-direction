@@ -110,13 +110,14 @@ def CreateNewPost(request):
         convertedimage = base64.b64encode(image.read())
         title=request.POST.get('title')
         tools=request.POST.get('tools')
+        arttype=request.POST.get('arttype')
         content=request.POST.get('content')
         user=request.user
         #print(title)
-        #print(content)
+        print(arttype)
         convertedimage="data:image/jpeg;base64,"+ str(convertedimage.decode("utf-8"))
 
-        entry = Post(tools=tools,title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
+        entry = Post(arttype=arttype, tools=tools,title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
         entry.save()
         messages.success(request, "Your comment has been posted successfully")
         return redirect('/blog')
@@ -168,5 +169,13 @@ def deletepost(request):
     print("deleting post " , received_json_data["srno"])
     return JsonResponse({'msg':"deleted "})    
 
+def typeprofile(request, type): 
+    arttype=request.POST.get('arttype')
+    return type
+    allPosts = Post.objects.filter(arttype=request.a).all()
+    #allPosts= Post.objects.all()
+    #is_home_page=True
+    context={'allPosts': allPosts }
+    return render(request, 'home/myprofile.html', context) 
     
 

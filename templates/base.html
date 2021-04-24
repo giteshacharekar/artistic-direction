@@ -13,8 +13,10 @@
   <title>{% block title %} {% endblock title %}</title>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body style="background-repeat: no-repeat;
+  background-attachment: fixed; background-image: url('https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg');">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:#FF0909;">
     <a class="navbar-brand" href="/">Artistic Direction</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -214,6 +216,7 @@
     </div>
   </div>
 
+<!-- create post Modal -->
   <div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="create" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -234,6 +237,14 @@
                         <label for="fname">title</label>
                         <input type="text" class="form-control"  name="title" placeholder="title" required>
                       </div>
+                        <div class="form-group">
+                         <label for="arttype">Art Field</label>
+                          <select name="arttype" class="form-control" id="arttype">
+                            <option value="graphite">Graphite And charcoal</option>
+                            <option value="digital">Digital Painting</option>
+                            <option value="oil">Oil and Gouche paintings</option>
+                          </select>
+                      </div>
                       <div class="form-group">
 
                       <div class="form-floating">
@@ -244,7 +255,7 @@
                      </div>
                       <div class="form-floating">
                       
-                        <label for="lname">tools</label>
+                        <label for="tools">tools</label>
                          <textarea class="form-control" placeholder="mention tools used in the art" name="tools" style="height: 100px"></textarea>
                    
                      </div>

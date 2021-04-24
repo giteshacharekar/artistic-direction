@@ -7,6 +7,7 @@ class Post(models.Model):
     sno = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
+    arttype=  models.CharField(max_length=255)
     views= models.IntegerField(default=0)
     totallikes=models.IntegerField(default=0)
     tools = models.TextField()

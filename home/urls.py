@@ -19,5 +19,6 @@ urlpatterns = [
    path('myprofile', views.MyProfile, name='MyProfile'),
    path('likepost', views.LikePost, name='likepost'),
    path('deletepost', views.deletepost, name='deletepost'),
+   path('filter/<str:type>', views.typeprofile, name='typeart')
    
 ]
