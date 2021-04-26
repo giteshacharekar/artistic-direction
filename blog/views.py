@@ -11,10 +11,10 @@ def blogHome(request):
         is_home_page=True
         context={'allPosts': allPosts ,"is_home_page":is_home_page}
         return render(request, "blog/blogHome.html", context)
-        
+    userid=str(request.user) 
     allPosts= Post.objects.all()
     is_home_page=True
-    context={'allPosts': allPosts ,"is_home_page":is_home_page}
+    context={'allPosts': allPosts ,"is_home_page":is_home_page, "userid":userid}
     return render(request, "blog/blogHome.html", context)
 
 def blogPost(request, slug): 
