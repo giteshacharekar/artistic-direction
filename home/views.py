@@ -129,13 +129,18 @@ def handleLogout(request):
     messages.success(request, "Successfully Logged Out")
     return redirect('home') 
 
-def MyProfile(request): 
-    user=request.user
-    print(user)
-    allPosts = Post.objects.filter(author=request.user).all()
+def MyProfile(request,username): 
+    user=username
+    userdetail=User.objects.filter(username=user).first()
+    print(userdetail.username)
+    allPosts = Post.objects.filter(author=user).all()
+    if userdetail.username==request.user:
+        is_myprofile=True
+    else:
+        is_myprofile=False
     #allPosts= Post.objects.all()
     #is_home_page=True
-    context={'allPosts': allPosts }
+    context={'allPosts': allPosts, "userdetail":userdetail, "is_myprofile":is_myprofile }
     return render(request, 'home/myprofile.html', context) 
 
 def LikePost(request): 

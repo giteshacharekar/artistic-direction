@@ -134,15 +134,15 @@
 
   </script>
 {% if allPosts|length == 0 %}
-<center><img src="https://img.icons8.com/cute-clipart/200/000000/nothing-found.png"/></center>
+<center><img style="margin-top: 150px;" src="https://img.icons8.com/cute-clipart/200/000000/nothing-found.png"/></center>
 {% endif %}
   {% for post in allPosts %}
 
 
-  <div id="delete{{ post.sno }}"
-    class="shadow p-3 mb-5 bg-white rounded row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+  <div id="delete{{ post.sno }}" style="background-color: rgb(255, 251, 251)!important;"
+    class="shadow p-3 mb-5  rounded row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
     <div class="col p-4 d-flex flex-column position-static">
-      <h3 class="mb-0 d-inline-block mb-3 ">Artwork by "{{post.author}}" </h3>
+      <h3 class="mb-0 d-inline-block mb-3 ">Artwork by <span onclick="window.open('/profile/{{post.author}}')">{{post.author}}</span> </h3>
       <div class="row">
 
         <div class="col s6"><img src='{{ post.artimage }}' style='width:100%;height:100%'></div>
@@ -162,11 +162,12 @@
             {% endif %}
           </div>
           <h4> {{post.views}} views <span id="likesof{{ post.sno }}">{{post.totallikes}}</span> likes<h4>
-              {% if user.is_authenticated %}
+              {% if user.is_authenticated and userid == post.author  %}
               <a onclick="deletepost({{ post.sno }})">
                 <img src="https://img.icons8.com/color/48/000000/delete-forever.png" />
               </a>
               {% endif %}
+             
         </div>
       </div>
 
