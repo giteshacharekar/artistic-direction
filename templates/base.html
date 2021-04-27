@@ -14,7 +14,7 @@
 </head>
 
 <body style="background-repeat: no-repeat;
-  background-attachment: fixed; background-image: url('https://www.freecodecamp.org/news/content/images/2020/04/w-qjCHPZbeXCQ-unsplash.jpg');">
+  background-attachment: fixed; background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c71f31c-d62e-4c14-b189-42d2fa1e0046/dai2dfu-a92854d5-e26d-4ce8-ab96-c2e6dd7eeb58.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMmM3MWYzMWMtZDYyZS00YzE0LWIxODktNDJkMmZhMWUwMDQ2XC9kYWkyZGZ1LWE5Mjg1NGQ1LWUyNmQtNGNlOC1hYjk2LWMyZTZkZDdlZWI1OC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.uY4KTgnmHobpJOAPgvZVEu3hcrw4bLGT6WrN8XZlirE');">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:#FF0909;">
     <a class="navbar-brand" href="/">Artistic Direction</a>
@@ -38,9 +38,11 @@
           <a class="nav-link" href="/about">About</a>
         </li>
          </li>
+          {% if user.is_authenticated %}
          <li class="nav-item {% block profileactive %} {% endblock profileactive %}">
           <a class="nav-link" href="/profile/{{request.user}}">My Profile</a>
         </li>
+        {% endif %}
 
       </ul>
       
@@ -53,7 +55,7 @@
       </form>
        {% if is_home_page and user.is_authenticated %}
         <a type="button" class="btn btn-success m-2 my-sm-0 " style="color:white" data-toggle="modal" data-target="#create">
-        Create Post
+        Add Artwork
       </a>
           
 
@@ -62,7 +64,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+          <h5 class="modal-title" id="loginModalTitle">Login To Artistic Direction</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -91,7 +93,10 @@
 
 
        {% endif %}
-      <a href="/admin" role="button" target="_blank" class="btn btn-success m-2 my-sm-0">Admin Panel</a> 
+      {% comment %}
+        <a href="/admin" role="button" target="_blank" class="btn btn-success m-2 my-sm-0">Admin Panel</a> 
+
+      {% endcomment %}
 
       {% if user.is_authenticated %}
       <ul class="navbar-nav mr-2">
@@ -140,7 +145,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
+          <h5 class="modal-title" id="signupModalTitle">SignUp to Artistic Direction</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

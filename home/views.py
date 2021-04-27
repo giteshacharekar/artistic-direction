@@ -119,7 +119,7 @@ def CreateNewPost(request):
 
         entry = Post(arttype=arttype, tools=tools,title=title,content=content,artimage=convertedimage,author=request.user,slug=title,timeStamp=datetime.now())
         entry.save()
-        messages.success(request, "Your comment has been posted successfully")
+        messages.success(request, "Your Artwork has been posted successfully")
         return redirect('/blog')
         
 

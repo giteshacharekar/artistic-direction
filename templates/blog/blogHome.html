@@ -11,18 +11,19 @@
     </div>
     <div class="col s4">
       <ul class="list-group" style="float:right">
-      <li class="nav-item dropdown list-group-item ">
-        <a class="nav-link dropdown-toggle " style="font-size: 20px; color: black; font-weight:bolder;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories in Artworks 
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/blog">All</a> 
-          <a class="dropdown-item" href="/blog?filter=graphite">Graphite And charcoal</a> 
-          <a class="dropdown-item" href="/blog?filter=digital">Digital Painting</a> 
-          <a class="dropdown-item" href="/blog?filter=oil">Oil and Gouche paintings</a> 
-        </div>
-      </li>
-     </ul>
+        <li class="nav-item dropdown list-group-item ">
+          <a class="nav-link dropdown-toggle " style="font-size: 20px; color: black; font-weight:bolder;" href="#"
+            id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories in Artworks
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/blog">All</a>
+            <a class="dropdown-item" href="/blog?filter=graphite">Graphite And charcoal</a>
+            <a class="dropdown-item" href="/blog?filter=digital">Digital Painting</a>
+            <a class="dropdown-item" href="/blog?filter=oil">Oil and Gouche paintings</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -133,16 +134,18 @@
 
 
   </script>
-{% if allPosts|length == 0 %}
-<center><img style="margin-top: 150px;" src="https://img.icons8.com/cute-clipart/200/000000/nothing-found.png"/></center>
-{% endif %}
+  {% if allPosts|length == 0 %}
+  <center><img style="margin-top: 150px;" src="https://img.icons8.com/cute-clipart/200/000000/nothing-found.png" />
+  </center>
+  {% endif %}
   {% for post in allPosts %}
 
 
-  <div id="delete{{ post.sno }}" style="background-color: rgb(255, 251, 251)!important;"
+  <div id="delete{{ post.sno }}" style="background-color: rgb(231, 253, 253)!important;"
     class="shadow p-3 mb-5  rounded row no-gutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
     <div class="col p-4 d-flex flex-column position-static">
-      <h3 class="mb-0 d-inline-block mb-3 ">Artwork by <span onclick="window.open('/profile/{{post.author}}')">{{post.author}}</span> </h3>
+      <h3 class="mb-0 d-inline-block mb-3 ">Artwork by <span
+          onclick="window.open('/profile/{{post.author}}')">{{post.author}}</span> </h3>
       <div class="row">
 
         <div class="col s6"><img src='{{ post.artimage }}' style='width:100%;height:100%'></div>
@@ -154,7 +157,7 @@
           <h5>Tools:</h5>
           <p class="card-text mb-auto">{{post.tools| truncatechars:500 }}</p>
           <div class="my-2">
-            <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary ">view post</a>
+            <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary ">view post / comment</a>
             {% if user.is_authenticated %}
             <a onclick="addlike({{ post.sno }})" id="post{{ post.sno }}">
               <img src="https://img.icons8.com/fluent/48/000000/facebook-like.png" />
@@ -162,12 +165,12 @@
             {% endif %}
           </div>
           <h4> {{post.views}} views <span id="likesof{{ post.sno }}">{{post.totallikes}}</span> likes<h4>
-              {% if user.is_authenticated and userid == post.author  %}
+              {% if user.is_authenticated and userid == post.author %}
               <a onclick="deletepost({{ post.sno }})">
                 <img src="https://img.icons8.com/color/48/000000/delete-forever.png" />
               </a>
               {% endif %}
-             
+
         </div>
       </div>
 
