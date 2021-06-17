@@ -105,7 +105,7 @@
           Welcome {{request.user}} {{ request.test }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/myprofile">My Profile</a> 
+          <a class="dropdown-item" href="/profile/{{request.user}}">My Profile</a> 
           <a class="dropdown-item" href="/logout">Logout</a> 
         </div>
       </li>
