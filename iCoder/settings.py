@@ -27,7 +27,7 @@ SECRET_KEY = '4tddmapqhix)kc3p-8r8nkx+))e8e&*%=zslqdlyy4212@apms'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['artisticdirection.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['artisticdirection.herokuapp.com']
 
 
 # Application definition
@@ -138,3 +138,4 @@ MESSAGE_TAGS = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
