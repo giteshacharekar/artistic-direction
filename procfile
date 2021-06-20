@@ -1,1 +1,1 @@
-web: gunicorn iCoder.wsgi --log-file -
+web: gunicorn artistic-direction.wsgi --log-file -
